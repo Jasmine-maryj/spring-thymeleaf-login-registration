@@ -1,6 +1,7 @@
 package com.dev.springthymeleafsecurity.config;
 
 import com.dev.springthymeleafsecurity.service.UserService;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@NoArgsConstructor
 public class SecConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] WHITE_LISTED_URLS={
@@ -40,7 +42,7 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
+    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder){
         authenticationManagerBuilder.authenticationProvider(authenticationProvider());
     }
 
