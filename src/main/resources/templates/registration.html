@@ -23,11 +23,18 @@
     <br/>
     <br/>
     <br/>
+
     <!--Registration Form-->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <!--Success message -->
+
+                <!--message -->
+
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">user with email already exists</div>
+                </div>
+
                 <div th:if="${param.success}">
                     <div class="alert alert-info">You've successfully registered</div>
                 </div>
@@ -58,12 +65,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
 </body>
 </html>

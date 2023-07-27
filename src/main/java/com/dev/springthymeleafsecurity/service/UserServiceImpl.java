@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,18 +27,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User save(UserDto userDto) {
-        User user = new User(userDto.getFirstName(),
-                userDto.getLastName(),
-                userDto.getEmail(),
-                passwordEncoder.encode(userDto.getPassword()),
-                Arrays.asList(new Role("ROLE_USER")));
-
-//        User user = new User();
-//        user.setFirstName(userDto.getFirstName());
-//        user.setLastName(userDto.getLastName());
-//        user.setEmail(userDto.getEmail());
-//        user.setPassword(userDto.getPassword());
-//        user.setRoles(List.of(new Role("ROLE_USER")));
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setRoles(List.of(new Role("ROLE_USER")));
 
         userRepository.save(user);
 
